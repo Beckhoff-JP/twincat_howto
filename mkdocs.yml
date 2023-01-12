@@ -1,0 +1,41 @@
+site_name: TwinCAT How To
+site_url: ""
+use_directory_urls: false
+plugins:
+    - with-pdf:
+        author: Beckhoff Automation K.K.
+        copyright: Beckhoff Automation K.K.
+        #
+        cover: true
+        cover_title: TwinCAT HowTo
+        cover_subtitle: Technical documents for Beckhoff Automation products.
+        heading_shift: true
+        toc_level: 2
+        ordered_chapter_level: 2
+        #excludes_children:
+        #    - 'release-notes/:upgrading'
+        #    - 'release-notes/:changelog'
+        #
+        #output_path: any-place/document.pdf
+        #enabled_if_env: ENABLE_PDF_EXPORT
+        #
+        #debug_html: true
+        #verbose: true
+        
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - def_list
+
+nav:
+  - Home: index.md
+  - Manual: 
+    - Index: manual/index.md
+    - "ライセンスドングルのセットアップ": manual/dongle/index.md
+  - FAQ:
+    - Index: faq/index.md
+
+theme:
+    name: material
+    analytics:
+        gtag: G-ABC123
