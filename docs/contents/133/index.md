@@ -1,4 +1,4 @@
-# リアルタイムEthernetドライバ互換性調査方法
+# TwinCATが対応するリアルタイムEthernetドライバの互換性はどのように調べますか？
 
 [関連InfoSys](https://infosys.beckhoff.com/content/1033/tc3_overview/9309844363.html?id=1489698440745036069)
 
@@ -9,9 +9,6 @@ VEN_に続く文字がベンダーIDで、DEV_に続く文字がデバイスID�
 
 この値が、 [InfoSysサイト](https://infosys.beckhoff.com/content/1033/tc3_overview/9309844363.html?id=1489698440745036069) で案内しているサポートするリアルタイムEthernetドライバに含まれるか確認してください。
 
-!!! info
-    このサイトの先頭に、 ``Last updated: TwinCAT *.* ****`` に記載されているTwinCATバージョンのものをお使いください。古いバージョンの場合はこのサイトに掲載されていたとしても Compatible driver とならない可能性があります。
-
 BSDの場合、 ``lspci`` に ``-nn`` オプションを付けて、その出力からethernetという文字が含まれる行をフィルタリングして得られます。
 
 ```shell
@@ -21,3 +18,7 @@ $ lspci -nn | grep -i ethernet
 
 の様に末尾に "[vendor ID:device ID]" の書式で表示されます。
 
+# サイトに掲載されているNICなのですがCompatibleとして認識されません
+
+掲載一覧に記されているベンダIDとデバイスIDは、先頭に記載されている、 ``Last updated: TwinCAT *.* ****`` のTwinCATバージョンで対応したものです。
+このバージョンより古いために未対応の可能性があります。記載されているTwinCATへのアップグレードをご検討ください。
