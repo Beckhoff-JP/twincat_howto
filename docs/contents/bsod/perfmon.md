@@ -4,95 +4,54 @@
 連続稼働によりログは非常に大きなサイズを占めますので、この手順では ``D:`` ドライブとして外付けストレージを設置し、そこへ記録するものとして説明します。
 
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>スタートメニューより検索を選び、 <code>perfmon</code> と入力</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>User Defined</code> から
-<code>New &gt; Data Collector Set</code> を選択して <code>Next</code>
-ボタンを押す</td>
-<td><img src="image/1_add_user_defined_monitor.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="odd">
-<td><code>Name:</code> に適当な名前（初期値のままで良い）を設定し、
-<code>Create from a template</code> が選択された状態で <code>Next</code>
-ボタンを押す</td>
-<td><img src="image/2_collection_type_name_setting.png"
-class="align-center" alt="image" /></td>
-</tr>
-<tr class="even">
-<td><code>System Diagnostics</code> を選択して <code>Next</code>
-ボタンを押す</td>
-<td><img src="image/3_select_template.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="odd">
-<td><code>Root directory:</code> 入力項目で、 <code>%systemdrive%</code>
-の部分を外付ストレージのドライブレターへ変更して <code>Next</code>
-ボタンを押す</td>
-<td><img src="image/4_define_save_drive.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="even">
-<td><code>Save and close</code> を選択して <code>Finish</code>
-ボタンを押す</td>
-<td><img src="image/5_save.png" class="align-center" alt="image" /></td>
-</tr>
-<tr class="odd">
-<td><code>User Defined</code> フォルダ下に作成した
-<code>New Data Collector Set</code>
-が追加されるため、右クリックして現れたポップアップメニューから
-<code>Properties</code> を選択</td>
-<td><img src="image/6_property.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="even">
-<td><code>Stop Condition</code><span class="title-ref">
-タブを開き、次の通り設定変更したあと、 </span><span
-class="title-ref">Apply</span><span class="title-ref"> , </span><span
-class="title-ref">OK</span>` ボタンを順にを押す
-<dl>
-<dt>Overall duration</dt>
-<dd>
-<p>ON &gt; OFF</p>
-</dd>
-<dt>Restart the data collector set at limits.</dt>
-<dd>
-<p>OFF &gt; ON</p>
-</dd>
-<dt>Duration</dt>
-<dd>
-<p>ON &gt; OFF</p>
-</dd>
-<dt>Maximum Size</dt>
-<dd>
-<p>OFF &gt; ON, 小分けにしたいログサイズ</p>
-</dd>
-<dt>Stop when all data collections have finished.</dt>
-<dd>
-<p>ON &gt; OFF</p>
-</dd>
-</dl></td>
-<td><img src="image/7_stop_condition.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="odd">
-<td>再度 <code>New Data Collector Set</code> を右クリックし、
-<code>Start</code>
-を選択する。これにより指定したフォルダパスへログが出力される。以後小分けにしたサイズ毎にフォルダが分かれてログを保存する。</td>
-<td><img src="image/8_start_logging.png" class="align-center"
-alt="image" /></td>
-</tr>
-</tbody>
-</table>
+1. スタートメニューより検索を選び、 ``perfmon`` と入力
+
+2. ``User Defined`` から ``New Data Collector Set`` を選択して ``Next``　ボタンを押す
+
+    ![](image/1_add_user_defined_monitor.png)
+
+3. ``Name:`` に適当な名前（初期値のままで良い）を設定し、 ``Create from a template`` が選択された状態で ``Next`` ボタンを押す
+
+    ![](image/2_collection_type_name_setting.png)
+
+4. ``System Diagnostics`` を選択して ``Next`` ボタンを押す
+
+    ![](image/3_select_template.png)
+
+5. ``Root directory:`` 入力項目で、 ``%systemdrive%`` の部分を外付ストレージのドライブレターへ変更して ``Next`` ボタンを押す
+
+    ![](image/4_define_save_drive.png)
+
+6. ``Save and close`` を選択して ``Finish`` ボタンを押す
+
+    ![](image/5_save.png)
+
+7. ``User Defined`` フォルダ下に作成した ``New Data Collector Set`` が追加されるため、右クリックして現れたポップアップメニューから ``Properties`` を選択
+
+    ![](image/6_property.png)
+
+8. ``Stop Condition`` タブを開き、次の通り設定変更したあと、``Apply`` , ``OK`` ボタンを順にを押す
+
+    ``Overall duration``
+    :   ON > OFF
+
+    ``Restart the data collector set at limits.``
+    :   OFF > ON
+
+    ``Duration``
+    :   ON > OFF
+
+    ``Maximum Size``
+    : OFF > ON, 小分けにしたいログサイズ[
+
+    ``Stop when all data collections have finished.``
+    :   ON > OFF
+
+    ![](image/7_stop_condition.png)
+
+9. 再度 ``New Data Collector Set`` を右クリックし、 ``Start`` を選択する。これにより指定したフォルダパスへログが出力される。以後小分けにしたサイズ毎にフォルダが分かれてログを保存する。
+
+    ![](image/8_start_logging.png)
 
 !!! Warning
     外付ドライブを取り外す際は、事前に `perfmon` を起動し、 `User Defined > New Data Collector Set` を右クリックし、 `Stop` を行い、ログ記録を停止させてください。
