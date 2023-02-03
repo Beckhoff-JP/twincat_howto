@@ -1,61 +1,24 @@
 site_name: TwinCAT How To
 site_url: ""
-use_directory_urls: false
+# Copyright
+copyright: 'Copyright © Beckhoff Automation 2023'
+use_directory_urls: true
 icon: material/emoticon-happy
 plugins:
   - external-markdown
-  - page-to-pdf:
-      disable: false
-      displayHeaderFooter: true
-      headerTemplate: '<style> title, pageNumber, totalPages { font-size:20px; margin-left:50px;}</style><span class="title"></span>'
-      footerTemplate: '<h1>Page <span class="pageNumber"></span> of <span class="totalPages"></span></h1>'
-      format: A4
-    #margin:
-    #  top: "70px"
-    #  bottom: "100px"
-    #  right: "30px"
-    #  left: "30px" 
   - search:
       language: 'jp'
-  #with-pdf:
-  #  author: Beckhoff Automation K.K.
-  #  copyright: Beckhoff Automation K.K.
-    #
-  #  cover: true
-  #  cover_title: TwinCAT HowTo
-  #  cover_subtitle: Technical documents for Beckhoff Automation products.
-    #custom_template_path: TEMPLATES PATH
-  #  heading_shift: true
-  #  toc_level: 2
-  #  ordered_chapter_level: 2
-    #excludes_children:
-    #    - 'release-notes/:upgrading'
-    #    - 'release-notes/:changelog'
-    #
-    #exclude_pages:
-    #    - 'bugs/'
-    #    - 'appendix/contribute/'
-    #convert_iframe:
-    #    - src: IFRAME SRC
-    #      img: POSTER IMAGE URL
-    #      text: ALTERNATE TEXT
-    #    - src: ...
-    #two_columns_level: 3
-    #
-    #render_js: true
-    #headless_chrome_path: headless-chromium
-    #
-    #output_path: any-place/document.pdf
-    #enabled_if_env: ENABLE_PDF_EXPORT
-    #
-    #debug_html: true
-    #show_anchors: true
-    #verbose: true
+
         
 markdown_extensions:
   - admonition
   - pymdownx.superfences
   - def_list
+  #- pymdownx.emoji:
+  #  emoji_index: !!python/name:materialx.emoji.twemoji
+  #  emoji_generator: !!python/name:materialx.emoji.to_svg
+  # ボタン表示
+  - attr_list
 
 theme:
   name: 'material'
@@ -64,12 +27,26 @@ theme:
     code: 'Source Code Pro'
     text: 'M PLUS 2'
   features:
-    - navigation.prune
-    - navigation.tabs
+    navigation.prune: true
+    navigation.tabs: true
+    navigation.top: true
+  pallete:
+    - scheme: default
+      toggle:
+          icon: material/toggle-switch-off-outline
+          name: ダークモードに切り替えます。
+    - scheme: slate
+      primary: red
+      accent: red
+      toggle:
+          icon: material/toggle-switch
+          name: ライトモードに切り替えます。
 
 nav:
   - Home: index.md
   - Manual: 
+    #- "開発": ''
+    #- "運用": ''
     - "保守":
       - "ライセンスドングルのセットアップ": contents/dongle/index.md
       - "レイテンシ調査": contents/latency/index.md
