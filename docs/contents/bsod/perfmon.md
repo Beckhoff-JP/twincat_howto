@@ -49,6 +49,20 @@
 
     ![](image/7_stop_condition.png)
 
+9. 次に、 ``New Data Collector Set`` を右クリックし、現れたポップアップメニューの ``Data Manager..`` を選びます。
+
+    ![](image/2023-01-17-13-55-33.png)
+
+10. Data Manager タブの次の項目を変更します。
+
+    ``Maximum folders:``
+    :   ON > OFF
+
+    ``Maximum root path size:``
+    :   ON > OFF
+
+    ![](image/2023-01-17-13-57-30.png)
+
 9. 再度 ``New Data Collector Set`` を右クリックし、 ``Start`` を選択する。これにより指定したフォルダパスへログが出力される。以後小分けにしたサイズ毎にフォルダが分かれてログを保存する。
 
     ![](image/8_start_logging.png)

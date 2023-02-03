@@ -16,6 +16,7 @@ $ lspci -nn | grep -i ethernet
 00:1f.6 Ethernet controller [0200]: Intel Corporation Ethernet Connection (2) I219-LM [8086:15b7] (rev 31)
 ```
 
+
 の様に末尾に "[vendor ID:device ID]" の書式で表示されます。
 
 # サイトに掲載されているNICなのですがCompatibleとして認識されません
