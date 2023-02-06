@@ -12,7 +12,7 @@ Cam のデータを保存する場合に使用する。
 ![NCTaskの追加](assets/NCTaskの追加.png)  
 MOTION > Add New Item...を選択する。
 
-![NCTask追加ダイアログ](assets/NCTask追加ダイアログ.png)  
+![NcTask追加ダイアログ](assets/NcTask追加ダイアログ.png)  
 目的の NCTask を作成する。
 
 ### Axis を追加する
