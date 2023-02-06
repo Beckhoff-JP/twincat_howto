@@ -46,7 +46,8 @@ nav:
   - Manual:
       - "開発":
           - "ユーザーライブラリの作成方法": contents/2047/index.md
-
+          - "Cam機能":
+              - "Camの設定手順": contents/2146/index.md
       #- "運用": ''
       - "保守":
           - "ライセンスドングルのセットアップ": contents/dongle/index.md
