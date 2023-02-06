@@ -1,15 +1,14 @@
 site_name: TwinCAT How To
 site_url: ""
 # Copyright
-copyright: 'Copyright © Beckhoff Automation 2023'
+copyright: "Copyright © Beckhoff Automation 2023"
 use_directory_urls: true
 icon: material/emoticon-happy
 plugins:
   - external-markdown
   - search:
-      language: 'jp'
+      language: "jp"
 
-        
 markdown_extensions:
   - admonition
   - pymdownx.superfences
@@ -21,11 +20,11 @@ markdown_extensions:
   - attr_list
 
 theme:
-  name: 'material'
-  language: 'ja'
+  name: "material"
+  language: "ja"
   font:
-    code: 'Source Code Pro'
-    text: 'M PLUS 2'
+    code: "Source Code Pro"
+    text: "M PLUS 2"
   features:
     navigation.prune: true
     navigation.tabs: true
@@ -33,29 +32,31 @@ theme:
   pallete:
     - scheme: default
       toggle:
-          icon: material/toggle-switch-off-outline
-          name: ダークモードに切り替えます。
+        icon: material/toggle-switch-off-outline
+        name: ダークモードに切り替えます。
     - scheme: slate
       primary: red
       accent: red
       toggle:
-          icon: material/toggle-switch
-          name: ライトモードに切り替えます。
+        icon: material/toggle-switch
+        name: ライトモードに切り替えます。
 
 nav:
   - Home: index.md
-  - Manual: 
-    #- "開発": ''
-    #- "運用": ''
-    - "保守":
-      - "ライセンスドングルのセットアップ": contents/dongle/index.md
-      - "レイテンシ調査": contents/latency/index.md
-      - "BSoDへの備えと対策": 
-        - "BSoDでメモリログを残す設定": contents/bsod/bsod.md
-        - "パフォーマンスモニタの記録": contents/bsod/perfmon.md
-        - "問題が発生後の対応": contents/bsod/after_incident.md
+  - Manual:
+      - "開発":
+          - "ユーザーライブラリの作成方法": contents/2047/index.md
+
+      #- "運用": ''
+      - "保守":
+          - "ライセンスドングルのセットアップ": contents/dongle/index.md
+          - "レイテンシ調査": contents/latency/index.md
+          - "BSoDへの備えと対策":
+              - "BSoDでメモリログを残す設定": contents/bsod/bsod.md
+              - "パフォーマンスモニタの記録": contents/bsod/perfmon.md
+              - "問題が発生後の対応": contents/bsod/after_incident.md
   - FAQ:
-    - "XAR":
-      - "リアルタイムEthernetドライバが適用できません": contents/133/index.md
-    - "XAE":
-      - "TwinCATと外部機器と通信するにはどんな方法がありますか?": contents/647/index.md
+      - "XAR":
+          - "リアルタイムEthernetドライバが適用できません": contents/133/index.md
+      - "XAE":
+          - "TwinCATと外部機器と通信するにはどんな方法がありますか?": contents/647/index.md
