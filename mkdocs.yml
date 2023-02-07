@@ -13,11 +13,16 @@ markdown_extensions:
   - admonition
   - pymdownx.superfences
   - def_list
-  #- pymdownx.emoji:
-  #  emoji_index: !!python/name:materialx.emoji.twemoji
-  #  emoji_generator: !!python/name:materialx.emoji.to_svg
+  - footnotes
+  - tables
   # ボタン表示
   - attr_list
+  - md_in_html
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 theme:
   name: "material"
@@ -45,7 +50,8 @@ nav:
   - Home: index.md
   - Manual:
       - "開発":
-          - "ユーザーライブラリの作成方法": contents/2047/index.md
+          - "ライブラリ化":
+            - "ユーザーライブラリの作成": contents/2047/index.md
           - "Cam機能":
               - "Camの設定手順": contents/2146/index.md
       #- "運用": ''
