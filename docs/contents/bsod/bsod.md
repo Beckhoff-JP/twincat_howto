@@ -14,9 +14,12 @@ BSoDが発生した際には、下記の3つのレベルに応じたメモリダ
 このダンプファイルはメモリサイズに応じた大容量のストレージの空き容量を必要とします。
 したがって、システムの環境によっては空き容量が十分ではなく、確実にこれらのダンプファイルが残らない事があります。
 
+![外付けストレージドライブの接続](image/external_storage.png){ align=right }
+
 本書の手順では完全ダンプファイルを確実に記録する事を目指した手順を示します。そのために十分な空き容量のストレージを用意し、そこへページングファイルとダンプファイルを出力するための設定を行います。
-まずは準備として下記の通りNTFSでフォーマットされたUSB接続の外部ストレージドライブ（HDDタイプ）をIPCのUSBポートへ接続してください。（
-`external_storage` ）
+
+まずは準備として下記の通りNTFSでフォーマットされたUSB接続の外部ストレージドライブ（HDDタイプ）をIPCのUSBポートへ接続してください。
+
 
 !!! Warning
     -   USBメモリなどのリムーバブルドライブは使用できません。また、固定ドライブでもSSDはBSoD中アクセスできない機種があります。外付けHDDをご選択ください。
@@ -25,12 +28,6 @@ BSoDが発生した際には、下記の3つのレベルに応じたメモリダ
         `C:` と読み替えてください。
     -   外付けストレージが不要になった場合は、本書の逆手順で設定を元にもどしてください。
 
-<figure>
-<img src="image/external_storage.png" id="external_storage"
-class="align-center" alt="外付けストレージドライブの接続" />
-<figcaption
-aria-hidden="true">外付けストレージドライブの接続</figcaption>
-</figure>
 
 本書では `D:` ドライブに接続したものとして説明します。
 
@@ -45,126 +42,68 @@ aria-hidden="true">外付けストレージドライブの接続</figcaption>
 データ  
 :   \<ドライブ名\>+\<パス\> (文字列値)
 
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><code>String Value</code> 型のエントリを新規作成。</td>
-<td><img src="image/crash_control_new_string.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="even">
-<td>エントリー名を <code>DedicatedDumpFile</code> に設定</td>
-<td><img src="image/new_dedicated_dump_file.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="odd">
-<td><dl>
-<dt>ダブルクリックして値を保存先に設定</dt>
-<dd>
-<p>例とえば、Dドライブが外付けUSBストレージでその直下に
-<code>dedicateddumpfile.sys</code>
-という名前で仮想メモリファイルを作る場合は右図の通り設定する、</p>
-</dd>
-</dl></td>
-<td><img src="image/path_dedicated_dump_file.png" class="align-center"
-alt="image" /></td>
-</tr>
-</tbody>
-</table>
 
-続いて、
 
-キー  
-: ``HKEY_LOCAL_MACHINESYSTEMCurrentControlSetControlCrashControl``
 
-名前  
-: ``DumpFileSize``
+1. `String Value` 型のエントリを新規作成
+    ![](image/crash_control_new_string.png){width="600px"}
+2. エントリー名を `DedicatedDumpFile` に設定
+    ![](image/new_dedicated_dump_file.png){width="600px"}
+3. ダブルクリックして値を保存先に設定する。例とえば、Dドライブが外付けUSBストレージでその直下に`dedicateddumpfile.sys`という名前で仮想メモリファイルを作る場合は右図の通り設定する。
+    ![](image/path_dedicated_dump_file.png){width="600px"}
+4. 続いて、`DWORD (32bit) Value` 型のエントリを以下の通り新規作成する。
+    
+    キー:  
+      ``HKEY_LOCAL_MACHINESYSTEMCurrentControlSetControlCrashControl``
 
-データ  
-: メインメモリが *M* GByte とすると 1024*M* + 400 の整数値 (DWORD値)
+    名前:  
+      ``DumpFileSize``
 
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 66%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><code>DWORD (32bit) Value</code> 型のエントリを新規作成</td>
-<td><img src="image/crash_control_new_dword.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="even">
-<td>エントリー名を <code>DumpFileSize</code> に設定</td>
-<td><img src="image/new_dump_file_size.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="odd">
-<td><dl>
-<dt>ダブルクリックして値を設定</dt>
-<dd>
-<p>値の基数を10進数 <code>Decimal</code> に設定し、メモリ容量 + 400
-MByteの整数値をMByteの単位で設定する。計算方法としては メインメモリが
-<span class="math inline"><em>M</em></span> GByte とすると <span
-class="math inline">1024<em>M</em> + 400</span> となる。 例えば 8
-Gbyteの場合は右図の通り設定する。</p>
-</dd>
-</dl></td>
-<td><img src="image/value_dump_file_size.png" class="align-center"
-alt="image" /></td>
-</tr>
-</tbody>
-</table>
+    データ:  
+      メインメモリが *M* GByte とすると 1024*M* + 400 の整数値 (DWORD値)
+
+    
+    ![](image/crash_control_new_dword.png){width="600px"}
+
+    エントリー名を <code>DumpFileSize</code> に設定
+    ![](image/new_dump_file_size.png){width="600px"}
+
+    ダブルクリックして値を設定
+
+    値の基数を10進数 <code>Decimal</code> に設定し、メモリ容量 + 400
+    MByteの整数値をMByteの単位で設定する。計算方法としては メインメモリが
+    GByte とすると1024M + 400 となる。 例えば 8 Gbyteの場合は次の通り設定する。
+    
+    ![](image/value_dump_file_size.png){width="600px"}
+
 
 ## ダンプファイル保存設定
 
-<table>
-<colgroup>
-<col style="width: 40%" />
-<col style="width: 60%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>スタートメニューから <code>Search</code> を選択</td>
-<td><img src="image/start-search.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="even">
-<td><code>SystemPropertiesAdvanced</code>
-と入力してEnterキーを押します。</td>
-<td><img src="image/systempropertiesadvanced.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="odd">
-<td><code>Advanced</code> タブが開いている事を確認し、
-<code>Startup and Recovery</code> 内の <code>Settings...</code>
-ボタンをクリックします。</td>
-<td><img src="image/startup_and_recovery.png" class="align-center"
-alt="image" /></td>
-</tr>
-<tr class="even">
-<td><p>次の3点を変更します。</p>
-<p>Write debugging information</p>
-<blockquote>
-<p>Automatic memory dump &gt; Complete memory dump</p>
-</blockquote>
-<p>Dump file</p>
-<blockquote>
-<p>外付けストレージ内に保存するダンプファイル名</p>
-</blockquote>
-<p>Disable automatic deletion of memory dumps when disk space is low</p>
-<blockquote>
-<p>OFF &gt; ON</p>
-</blockquote></td>
-<td><p><img src="image/complete_memory_dump.png" class="align-center"
-alt="image" /></p></td>
-</tr>
-</tbody>
-</table>
+
+1. スタートメニューから`Search`を選択
+
+    ![](image/start-search.png){width="400px"}
+
+2. `SystemPropertiesAdvanced` と入力してEnterキーを押します。
+
+    ![](image/systempropertiesadvanced.png){width="600px"}
+
+3. `Advanced` タブが開いている事を確認し、`Startup and Recovery`内の `Settings...` ボタンをクリックします。
+
+    ![](image/startup_and_recovery.png){width="800px"}
+
+4. 次の3点を変更します。
+
+    Write debugging information
+    :   Automatic memory dump > Complete memory dump
+
+    Dump file
+    :   外付けストレージ内に保存するダンプファイル名
+
+    Disable automatic deletion of memory dumps when disk space is low
+    :   OFF > ON
+
+    ![](image/complete_memory_dump.png){width="500px"}
 
 ## 設定確認
 
