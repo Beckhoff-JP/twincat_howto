@@ -10,36 +10,34 @@
 
 ## 記事作成の環境構築
 
-### Repository の作成
+1. Python環境と、リポジトリ中にある `requirements.txt` パッケージをインストールしてください。
 
-[Beckhoff-JP/twincat_howto](https://github.com/Beckhoff-JP/twincat_howto)  
-上記リンクから **fork** を個人アカウントに作成する。  
-fork された Repository は **Beckhoff-JP/twincat_howto** に対する作業エリアになります。
+    ```shell
+    $ pip install -r requirements.txt
+    ```
 
-### fork された Repository を Clone する
+2.  以下のコマンドを発行するとローカルコンピュータ上にWEBサーバが起動し、 `http://localhost:8000` にアクセスすることで作成したMarkdown文書をプレビューすることができます。
 
-作業を行いたいディレクトリに fork した Repository の Clone を作成する。  
-実作業は個々で行う。
+    ```shell
+    $ mkdocs serve
+    ```
 
-## コンテンツ追加手順
+3. 次項の記事の作成方法に記載した手順で文書を作成し、プレビューで問題ない事をご確認の上、プルリクエストを送付してください。
 
-### Redmine にチケットを登録する
+## 記事の作成
 
-[Redmine](https://beckhoff.cloud.redmine.jp/projects/cutomer_support/issues)  
-上記リンクから作成するコンテンツのチケットを作成する。
+1. 本リポジトリ [Beckhoff-JP/twincat_howto](https://github.com/Beckhoff-JP/twincat_howto) から **fork** してください。
 
-### 記事の作成
+2. `docs/Contents` 以下にサブディレクトリを作成いただき、下記の構成のMarkdown文書でご記入ください。Markdown書式は　[mkdocs-material](https://squidfunk.github.io/mkdocs-material/) に準じてご記載ください。
+サブディレクトリ名はBAJP社員が作成する記事については内部管理番号となっていますが、一般の方は特に規約はございません。ユニークな文字を使ってください。
 
-docs > Contents 直下に作成した**チケット番号**のディレクトリを作成する。  
-内部の構成ディレクトリは極力下記で設定することを推奨です。  
-(既に作成済み等であればそのままでもよい。)
+   - assets : 画像保存フォルダ
+   - index.md : 記事本文
 
-- assets : 画像保存フォルダ
-- index.md : 記事本文
+!!! warning
+    * Markdownの記述方式を拡張するため plugin の追加が必要な場合、次のファイルにプラグインの定義を漏れなく行ってください。
+      * requirements.txt
+      * .github/workflows/ci.yml
+    * 記事の単位はアトミックな単位（これ以上分解できない程度）で作成願います。文書構成は次の手順に示す`nav`ツリーで定義します。これにより情報の再利用性を高められるようにします。
 
-### 記事のアップロード
-
-作成したデータを Push して PullRequest を作成してください。  
-PullRequest は **Beckhoff-JP/twincat_howto** に申請されます。  
-PullRequest が Merge されると自動的に **Twincat Howto** に反映されます。
-
+3. ルートディレクトリにある `mkdocs.yml` を編集し、`nav` ツリーに作成した文書に対するリンクを登録してください。
